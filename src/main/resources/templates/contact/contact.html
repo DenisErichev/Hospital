@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Связь</title>
+</head>
+
+<body>
+<div th:replace="fragments/nav-bar/nav-bar :: nav"></div>
+<div>
+    <form action="#" th:action="@{/contact/save}" th:object="${contact}" method="POST">
+        <h2>Связаться с нами</h2>
+        <div><input type="text" th:field="*{name}" name="name" placeholder="ФИО"></div>
+        <div class><input type="email" name="email" th:field="*{email}" placeholder="Почта">
+        </div>
+        <div class><textarea name="message" th:field="*{message}" placeholder="Сообщение" rows="14"></textarea></div>
+        <div class>
+            <button type="submit" onclick="alert('Спасибо, что отправили нам сообщение. Мы отправляем вам электронное письмо.')">Отправить</button>
+        </div>
+    </form>
+</div>
+</body>
+
+</html>

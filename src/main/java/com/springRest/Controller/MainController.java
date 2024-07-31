@@ -17,10 +17,5 @@ public class HelloController {
         return "login";
     }
 
-    @GetMapping("/hello")
-    public String sayHello(Model model) {
-        model.addAttribute("date", new java.util.Date());
-        return "helloworld";
-    }
 }
 

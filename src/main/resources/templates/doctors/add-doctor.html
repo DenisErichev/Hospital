@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить врача</title>
+</head>
+
+<body>
+<h2>Форма добавления/обновления врача</h2>
+
+<form action="#" th:action="@{/doctors/save}" th:object="${doctor}" method="POST">
+    <input type="hidden" th:field="*{id}">
+    <label>Имя:</label>
+    <input type="text" th:field="*{name}">
+    <br>
+    <label>Отчество:</label>
+    <input type="text" th:field="*{fatherName}">
+    <br>
+    <label>Болезнь:</label>
+    <select th:field="*{disease}">
+        <option th:each="disease : ${diseaseList}" th:value="${disease}" th:text="${disease.diseaseName}"></option>
+    </select>
+    <br>
+    <button type="submit">Сохранить</button>
+</form>
+
+<a th:href="@{/doctors/list}">Вернуться к списку врачей</a>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
