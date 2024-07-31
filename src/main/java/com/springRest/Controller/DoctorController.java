@@ -1,77 +1,48 @@
 package com.springRest.Controller;
 
 import com.springRest.enitity.Doctor;
-import com.springRest.enitity.Patient;
 import com.springRest.service.DiseaseService;
 import com.springRest.service.DoctorService;
-import com.springRest.service.DoctorService;
-import com.springRest.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
-import java.util.List;
-
-
 @Controller
 @RequestMapping("/doctors")
-public class DoctorController
-{
-
-    // load employee data
-    private DoctorService doctorService;
-    private DiseaseService diseaseService;
-    private List<Doctor> theDoctors;
+public class DoctorController {
     @Autowired
-    public DoctorController(DoctorService doctorService, PatientService patientService, DiseaseService diseaseService)
-    {
-        this.doctorService = doctorService;
-        this.diseaseService = diseaseService;
-    }
-
+    private DoctorService doctorService;
     @GetMapping("/list")
-    public String listDoctors(Model theModel)
-    {
-        theDoctors = doctorService.getAllDoctors();
-//        theModel.addAttribute("doctors", theDoctors);
-        theModel.addAttribute("diseaseList",diseaseService.getAllDiseases());
+    public String doctors(Model model) {
+        model.addAttribute("doctorList", doctorService.getAllDoctors());
         return "doctors/list-doctors";
     }
-    @GetMapping("/addDoctor")
-    public String getDoctorForm(Model model)
-    {
-        Doctor Doctor = new Doctor();
-        model.addAttribute("diseaseList",diseaseService.getAllDiseases());
-        model.addAttribute("doctor",Doctor);
-        return "doctors/addDoctor";
+
+    @GetMapping("/add")
+    public String getForm(Model model) {
+        model.addAttribute("doctor", new Doctor());
+        return "doctors/add-doctor";
     }
 
     @PostMapping("/save")
-    public String saveDoctor(@ModelAttribute("doctor") Doctor theDoctor)
-    {
-        doctorService.save(theDoctor);
+    public String save(@ModelAttribute("doctor") Doctor doctor) {
+        doctorService.save(doctor);
         return "redirect:/doctors/list";
-    }
-
-    @GetMapping("/showFormForUpdate")
-    public String showUpdateForm(@RequestParam("doctorId") int theID,Model model)
-    {
-        Doctor doctor = doctorService.findById(theID);
-        model.addAttribute("diseaseList",diseaseService.getAllDiseases());
-        model.addAttribute("doctor",doctor);
-        return "doctors/addDoctor";
     }
 
     @GetMapping("/delete")
-    public String deleteDoctor(@RequestParam("doctorId") int theID)
-    {
-        doctorService.deleteById(theID);
+    public String delete(@RequestParam("id") int id) {
+        doctorService.deleteById(id);
         return "redirect:/doctors/list";
     }
 
-
+    @GetMapping("/update")
+    public String update(@RequestParam("id") int id, Model model) {
+        Doctor doctor = doctorService.findById(id);
+        model.addAttribute("doctor", doctor);
+        return "doctors/add-doctor";
+    }
 }
 
 

@@ -1,13 +1,10 @@
 package com.springRest.service;
 
 import com.springRest.DAO.DoctorRepository;
-import com.springRest.DAO.PatientRepository;
 import com.springRest.enitity.Doctor;
-import com.springRest.enitity.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.util.List;
 import java.util.Optional;
 

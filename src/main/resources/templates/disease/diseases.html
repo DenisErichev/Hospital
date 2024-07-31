@@ -1,25 +1,21 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Список болезней</title>
 </head>
-
 <body>
 <div th:replace="fragments/nav-bar/nav-bar :: nav"></div>
-
 <div>
 	<h3>Список болезней</h3>
 	<hr>
-	<a th:href="@{/diseases/addDisease}">Добавить болезнь</a>
+	<a th:href="@{/diseases/add}">Добавить болезнь</a>
 	<table>
-		<thead class="thead-dark">
+		<thead>
 		<tr>
 			<th>Название болезни</th>
-			<th>Описание</th>
-			<th>Действия</th>
+			<th>Толкование</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -27,8 +23,9 @@
 			<td th:text="${disease.diseaseName}"></td>
 			<td th:text="${disease.description}"></td>
 			<td>
-				<a th:href="@{/diseases/update(diseaseId=${disease.id})}">Обновление</a>
-				<a th:href="@{/diseases/delete(diseaseId=${disease.id})}"onclick="if (!(confirm('Уверены?'))) return false">Удалить</a>
+				<a th:href="@{/diseases/update(id=${disease.id})}">Обновление</a>
+				<a th:href="@{/diseases/delete(id=${disease.id})}"
+				   onclick="if (!(confirm('Уверены?'))) return false">Удалить</a>
 			</td>
 		</tr>
 		</tbody>
@@ -36,6 +33,7 @@
 </div>
 </body>
 </html>
+
 
 
 

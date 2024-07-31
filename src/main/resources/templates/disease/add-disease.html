@@ -14,12 +14,12 @@
     <label>Название болезни:</label>
     <input type="text" th:field="*{diseaseName}">
     <br>
-    <label>Описание:</label>
+    <label>Толкование:</label>
     <input type="text" th:field="*{description}">
     <button type="submit">Сохранить</button>
 </form>
 
-<a th:href="@{/diseases/checkList}">Вернуться к списку болезней</a>
+<a th:href="@{/diseases/list}">Вернуться к списку болезней</a>
 </body>
 
 </html>

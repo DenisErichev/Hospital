@@ -5,25 +5,23 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-import java.io.PrintWriter;
-
 @Aspect
 @Component
-public class MyAspect {
+public class Aop {
     @After("execution(* com.springRest.Controller.PatientController.*(..))")
-    public void beforeControllerMethodsPatient() {
+    public void AfterPatient() {
         System.out.println("Клик по ссылки болезней...");
     }
     @After("execution(* com.springRest.Controller.MedicineController.*(..))")
-    public void beforeControllerMethodsMedicine() {
+    public void AfterMedicine() {
         System.out.println("Клик по ссылке препаратов...");
     }
     @Before("execution(* com.springRest.Controller.DiseaseController.*(..))")
-    public void beforeControllerMethodsDisease() {
+    public void BeforeDisease() {
         System.out.println("Клик по ссылке болезней...");
     }
     @Before("execution(* com.springRest.Controller.DoctorController.*(..))")
-    public void beforeControllerMethodsDoctor() {
+    public void beforeDoctor() {
         System.out.println("Клик по ссылке врачей...");
     }
 }

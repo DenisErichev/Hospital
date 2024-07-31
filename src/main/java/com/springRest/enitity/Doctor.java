@@ -8,98 +8,57 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
 @Table(name = "doctor")
-public class Doctor
-{
+public class Doctor {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="doctor_name")
-    private String Name;
-    @Column(name="father_name")
-    private String fatherName;
-    @Column(name="email")
-    private String email;
 
-    @ManyToOne(cascade =
-            {CascadeType.DETACH, CascadeType.MERGE,
-                    CascadeType.PERSIST, CascadeType.REFRESH})
+    private String name;
+    private String fatherName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "disease_id")
     private Disease disease;
 
-    public Doctor()
-    {
+    public Doctor() {}
 
-    }
-
-    public Doctor(String name, String fatherName, String gender, String CNIC,String email, Date dateOfBirth)
-    {
-        Name = name;
+    public Doctor(String name, String fatherName, String email) {
+        this.name = name;
         this.fatherName = fatherName;
-        this.email = email;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName()
-    {
-        return Name;
+    public String getName() {
+        return name;
     }
 
-    public void setName(String name)
-    {
-        Name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getFatherName()
-    {
+    public String getFatherName() {
         return fatherName;
     }
 
-    public void setFatherName(String fatherName)
-    {
+    public void setFatherName(String fatherName) {
         this.fatherName = fatherName;
     }
-
-    public String getEmail()
-    {
-        return email;
-    }
-
-    public void setEmail(String email)
-    {
-        this.email = email;
-    }
-
-
-    public Disease getDisease()
-    {
+    public Disease getDisease() {
         return disease;
     }
-
-    public void setDisease(Disease disease)
-    {
+    public void setDisease(Disease disease) {
         this.disease = disease;
     }
 
-    @Override
-    public String toString()
-    {
-        return "Doctor{" +
-                "id=" + id +
-                ", Name='" + Name + '\'' +
-                ", FatherName='" + fatherName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
 }
+

@@ -17,21 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @GetMapping("/home-page")
-    public String getHomePage(Model model) {
+    public String getHome(Model model) {
         return "Home/home";
     }
 
     @GetMapping("/contact-US")
-    public String getContactPage(Model model)
+    public String getContact(Model model)
     {
         Contact contact = new Contact();
         model.addAttribute("contact", contact);
-        return "contact-US/contact-US";
+        return "contact/contact";
     }
 
-    @PostMapping("/save-contact")
-    public String receiveContact(@ModelAttribute("contact") Contact contact) {
-        // Logic to save contact information
-        return "redirect:/Home/home-page";
-    }
 }

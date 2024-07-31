@@ -20,13 +20,13 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Users admin = new Users();
         admin.setUsername("admin");
-        admin.setPassword(passwordEncoder.encode("admin123"));
+        admin.setPassword(passwordEncoder.encode("admin"));
         admin.setRole("ADMIN");
         userRepository.save(admin);
 
         Users user = new Users();
         user.setUsername("user");
-        user.setPassword(passwordEncoder.encode("user123"));
+        user.setPassword(passwordEncoder.encode("user"));
         user.setRole("USER");
         userRepository.save(user);
     }

@@ -18,9 +18,6 @@
     <input type="text" th:field="*{fatherName}">
     <br>
     <label>Болезнь:</label>
-    <select th:field="*{disease}">
-        <option th:each="disease : ${diseaseList}" th:value="${disease}" th:text="${disease.diseaseName}"></option>
-    </select>
     <br>
     <button type="submit">Сохранить</button>
 </form>

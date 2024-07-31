@@ -17,8 +17,6 @@ public class Medicine
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
-    @Column(name="medicine_name")
-    private String medicineName;
     @Column(name="company_name")
     private String companyName;
     @Column(name="manufacture_date")
@@ -60,7 +58,6 @@ public class Medicine
 
     public Medicine(String name, String companyName, Date manufactureDate, Date expiryDate,String type)
     {
-        this.medicineName = name;
         this.companyName = companyName;
         this.manufactureDate = manufactureDate;
         this.expiryDate = expiryDate;
@@ -87,15 +84,6 @@ public class Medicine
         this.id = id;
     }
 
-    public String getName()
-    {
-        return medicineName;
-    }
-
-    public void setName(String name)
-    {
-        this.medicineName = name;
-    }
 
     public String getCompanyName()
     {

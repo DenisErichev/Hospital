@@ -2,7 +2,7 @@ package com.springRest.Controller;
 
 //import com.springRest.DAO.MedicineRepository;
 import com.springRest.enitity.Medicine;
-import com.springRest.enitity.Patient;
+import com.springRest.service.DoctorService;
 import com.springRest.service.MedicineService;
 
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/medicines")
 public class MedicineController
@@ -26,8 +25,6 @@ public class MedicineController
     private MedicineService medicineService;
     private List<Medicine> themedicines;
 
-    @Autowired
-    private EntityManager em;
     @Autowired
     public MedicineController(MedicineService medicineService)
     {
@@ -75,6 +72,7 @@ public class MedicineController
 
 
 }
+
 
 
 
